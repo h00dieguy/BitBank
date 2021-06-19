@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Customers</title>
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/tr.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+<body>
+	<nav>
+      <div class="logo"><i class="fa fa-university" aria-hidden="true" style="color:#FFA500; background: none;"></i>Bit<span style="color:white;">Bank</span></div>
+      <label for="btn" class="icon">
+      <span id="hamburger" class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn">
+      <ul>
+        <li><a href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true"></i>HOME</a></li>
+        <li><a href="{% url 'members' %}"><i class="fa fa-users" aria-hidden="true"></i>Customers</a></li>
+        <li><a href="{% url 'transactions' %}"><i class="fa fa-exchange" aria-hidden="true"></i>Transactions</a></li>
+      
+      </ul>
+      
+    </nav>
+
+	<aside>
+	<div class="center">
+		<h2 class="t2"><i class="fa fa-exchange" aria-hidden="true"></i>Transfer Money</h2>
+		<form method="post">{% csrf_token %}
+		<div class="text-field">
+			<label>Email</label>
+			<input type="Email" name="send_email" placeholder="Enter your Email">
+		</div>
+		<div class="text-field">
+			<label>Amount</label>
+			<input type="text" name="amt" placeholder="Enter Amount">
+		</div>
+			<select id="email" name="rec_email">
+				<option value="aadarshraje41@gmail.com">Select Reciever Email</option>
+				{% for i in members %}
+				<option value="{{i.email}}">{{i.name}}</option>
+				{% endfor %}
+
+			</select><br>
+			<input type="submit" name="submit" value="Transfer">
+		</form>
+	</div>
+
+	</aside>
+	<section style="margin-left: 40px;">
+	
+		<div style="width: 800px;">
+        <h1 style="margin: 20px; margin-left: 55px  ;"><i class="fa fa-users" aria-hidden="true"></i>Customers</h1>
+        
+            <table>
+                <thead>
+                <tr class="table-headers">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Balance</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                   {% for transfer in members%} 
+                  <td>{{transfer.id}}</td>
+                  <!-- <th class="mobile-header">id</th><td>{{transfer.id}}</td> -->
+                  <th class="mobile-header">Name</th><td>{{transfer.name}}</td>
+                  <th class="mobile-header">Email</th><td>{{transfer.email}}</td>
+                  <th class="mobile-header">Balance</th><td>{{transfer.balance}}</td>
+                </tr>
+                
+                 {% endfor%}
+                
+                
+                </tbody>
+            </table>
+      </div>
+
+
+
+	</section>
+
+	 <div>
+      <style media="screen">
+        .successMessage{
+          color: #155724;
+          background: #d4edda;
+          padding: 10px 10px;
+          /* width: 200px; */
+          min-width: 300px;
+          border-radius: 4px;
+          border-left: 8px solid #155724;
+          pointer-events: none;
+          right: 2%;
+          top: 18%;
+          position: absolute;
+          transform: translate(-10%, -70%);
+
+        }
+        #check{
+		  color: green;
+		  background: none;
+		  padding: none;
+		  border-radius: none;
+		  margin-right: none;
+        }
+      </style>
+
+      {% for message in messages %}
+      <div class="successMessage">
+      <i id="check" class="fa fa-check-circle"></i>
+      {{ message }}</div>
+      {% endfor %}
+	
+<script>
+	setTimeout(function() {
+      $('.successMessage').fadeOut('fast');
+  }, 3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <link rel="icon" type="image/png" href="{% static 'images/logo4.png' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <nav>
+
+      <div class="logo"><i class="fa fa-university" aria-hidden="true" style="color:#FFA500; background: none;"></i>Bit<span style="color:white;">Bank</span></div>
+      <label for="btn" class="icon">
+      <span id="hamburger" class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn">
+      <ul>
+       <li><a href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true"></i>HOME</a></li>
+        <li><a href="{% url 'members' %}"><i class="fa fa-users" aria-hidden="true"></i>Customers</a></li>
+        <li><a href="{% url 'transactions' %}"><i class="fa fa-exchange" aria-hidden="true"></i>Transactions</a></li>
+      
+      </ul>
+    </nav>
+    <header>  
+      <div class="company-text">
+            <h1>
+    Sparks Foundation <span>Internship</span></h1>
+        </div>
+    <div class="welcome-text">
+            <h1>
+    <span>BANK SYSTEM</span></h1>
+    <a href="{% url 'members' %}">Transfer Money</a>
+        </div>
+    </header>
+   
+<script>
+    $('.icon').click(function(){
+    $('#hamburger').toggleClass("cancel");
+    });
+
+
+    setTimeout(function() {
+    $('.LoginMessage').fadeOut('fast');
+}, 3000);
+
+</script>
+
+  </body>
+</html>

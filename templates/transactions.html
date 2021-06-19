@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Transactions</title>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tr.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav>
+      <div class="logo"><i class="fa fa-university" aria-hidden="true" style="color:#FFA500; background: none;"></i>Bit<span style="color:white;">Bank</span></div>
+      <label for="btn" class="icon">
+      <span id="hamburger" class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn">
+      <ul>
+        <li><a href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true"></i>HOME</a></li>
+        <li><a href="{% url 'members' %}"><i class="fa fa-users" aria-hidden="true"></i>Customers</a></li>
+        <li><a href="{% url 'transactions' %}"><i class="fa fa-exchange" aria-hidden="true"></i>Transactions</a></li>
+      
+      </ul>
+      
+    </nav>
+
+
+    <div style="width: 1250px;">
+        <h1 style="margin: 20px; margin-left: 55px  ;"><i id="history" class="fa fa-history" aria-hidden="true"></i>
+Transfer History</h1>
+        
+            <table>
+                <thead>
+                <tr class="table-headers">
+                <th>Transfer ID</th>
+                <th>Timestamp</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                   {% for transfer in transfer_history%} 
+                  <td>{{transfer.id}}</td>
+                  <th class="mobile-header">Timestamp</th><td>{{transfer.timestamp}}</td>
+                  <th class="mobile-header">Sender</th><td>{{transfer.sender}}</td>
+                  <th class="mobile-header">Receiver</th><td>{{transfer.receiver}}</td>
+                  <th class="mobile-header">Amount</th><td>{{transfer.amount}}</td>
+                </tr>
+                
+                 {% endfor%}
+                
+                
+                </tbody>
+            </table>
+      </div>
+</body>
+</html>
