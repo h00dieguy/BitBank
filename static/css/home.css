@@ -1,0 +1,75 @@
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(bank.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+.company-text {
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	margin: 15% 30%;
+	text-align: center;
+}
+.company-text h1 {
+	text-align: center;
+	color: #fff;
+	/*text-transform: uppercase;*/
+	font-size: 40px;
+}
+/*.company-text h1 span {
+	color: #00fecb;
+	color: #1A73E8;
+}*/
+
+.welcome-text {
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	margin: 20% 30%;
+	text-align: center;
+}
+.welcome-text h1 {
+	text-align: center;
+	color: #fff;
+	/*text-transform: uppercase;*/
+	font-size: 40px;
+}
+.welcome-text h1 span {
+	color: #FFA500;
+}
+.welcome-text a {
+	border: 3px solid #1A73E8;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 17px;
+	margin-top: 20px;
+	display: inline-block;
+	color: #fff;
+}
+.welcome-text a:hover {
+	background: #1A73E8;
+	color: whitesmoke;
+}
+/*resposive*/
+
+@media (max-width:600px) {
+	
+	.welcome-text {
+		width: 100%;
+		height: auto;
+		margin: 30% 0;
+	}
+	.welcome-text h1 {
+		font-size: 30px;
+	}
+}
